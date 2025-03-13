@@ -1,13 +1,5 @@
 # Cronograma e Divisão de Tarefas para 3 Sprints de 4 Semanas
 
-## Visão Geral do MVP
-O MVP será uma aplicação web que permite:
-1. Busca de jurisprudência por palavras-chave, temas ou tribunais.
-2. Resumo automático de decisões judiciais.
-3. Visualização de resultados com filtros básicos (data, tribunal, tema).
-
----
-
 ## Sprint 1: Definição e Infraestrutura Básica
 **Objetivo:** Configurar o ambiente de desenvolvimento, definir a arquitetura e criar a base do projeto.
 
@@ -20,7 +12,7 @@ O MVP será uma aplicação web que permite:
 2. **Configuração do Ambiente de Desenvolvimento (Semana 1)**
    - Configurar repositório Git (GitHub/GitLab).
    - Configurar ambiente Python (virtualenv ou Docker).
-   - Instalar bibliotecas básicas (FastAPI/Flask, SpaCy, Hugging Face, etc.).
+   - Instalar bibliotecas básicas (Flask, SpaCy, Hugging Face, etc.).
    - **Responsável:** Pessoa 1.
 
 3. **Definição da Arquitetura (Semana 2)**
@@ -33,12 +25,17 @@ O MVP será uma aplicação web que permite:
    - Criar esquema inicial para armazenar decisões judiciais e metadados.
    - **Responsável:** Pessoa 3.
 
-5. **Desenvolvimento do Backend Básico (Semana 3-4)**
-   - Criar API básica com FastAPI/Flask para receber buscas.
+5. **Coleta de Dados Inicial (Semana 3)**
+   - Definir fontes de dados (tribunais, APIs públicas, etc.).
+   - Desenvolver scripts para coleta inicial de jurisprudências via API ou web scraping.
+   - **Responsável:** Pessoa 3.
+
+6. **Desenvolvimento do Backend Básico (Semana 3-4)**
+   - Criar API básica com Flask para receber buscas.
    - Implementar endpoints iniciais (`/search`, `/summarize`).
    - **Responsável:** Pessoa 1 e Pessoa 2.
 
-6. **Integração com NLP (Semana 4)**
+7. **Integração Inicial de NLP (Semana 4)**
    - Integrar SpaCy ou Hugging Face para pré-processamento de textos.
    - Criar função básica para resumir textos.
    - **Responsável:** Pessoa 3.
@@ -50,7 +47,7 @@ O MVP será uma aplicação web que permite:
 
 ### Tarefas:
 1. **Desenvolvimento do Frontend (Semana 5-6)**
-   - Criar interface básica com React.js ou Vue.js.
+   - Criar interface básica com React.js.
    - Implementar campo de busca e exibição de resultados.
    - **Responsável:** Pessoa 1.
 
@@ -64,7 +61,12 @@ O MVP será uma aplicação web que permite:
    - Adicionar suporte para identificação de termos jurídicos.
    - **Responsável:** Pessoa 3.
 
-4. **Testes e Validação (Semana 7-8)**
+4. **Integração com Fontes de Dados (Semana 7)**
+   - Implementar coleta automática de decisões judiciais (web scraping ou APIs).
+   - Normalizar e armazenar dados no banco de dados.
+   - **Responsável:** Pessoa 3.
+
+5. **Testes e Validação (Semana 8)**
    - Escrever testes unitários para o backend.
    - Validar funcionalidades com dados reais (exemplos de jurisprudência).
    - **Responsável:** Todos.
@@ -85,12 +87,12 @@ O MVP será uma aplicação web que permite:
    - Adicionar cache para consultas frequentes.
    - **Responsável:** Pessoa 2.
 
-3. **Integração com Fontes de Dados (Semana 10-11)**
-   - Implementar coleta automática de decisões judiciais (web scraping ou APIs).
-   - Normalizar e armazenar dados no banco de dados.
-   - **Responsável:** Pessoa 3.
+3. **Integração de Segurança e Autenticação (Semana 10)**
+   - Implementar autenticação de usuários (OAuth2, JWT).
+   - Adicionar controle de acesso baseado em roles.
+   - **Responsável:** Pessoa 2.
 
-4. **Testes Finais e Correção de Bugs (Semana 11-12)**
+4. **Testes Finais e Correção de Bugs (Semana 11)**
    - Realizar testes de carga e performance.
    - Corrigir bugs identificados.
    - **Responsável:** Todos.
@@ -102,40 +104,22 @@ O MVP será uma aplicação web que permite:
 
 ---
 
-## Divisão de Responsabilidades por Pessoa
-
-### Pessoa 1:
-- Frontend (React.js).
-- Configuração do ambiente e deploy.
-- Auxílio no backend (APIs básicas).
-
-### Pessoa 2:
-- Backend (FastAPI/Flask).
-- Banco de dados e otimização de buscas.
-- Auxílio no frontend (integração com APIs).
-
-### Pessoa 3:
-- NLP (SpaCy, Hugging Face).
-- Integração com fontes de dados.
-- Testes e validação.
-
----
-
 ## Entregas Esperadas ao Final de Cada Sprint
 
 ### Sprint 1:
 - Ambiente de desenvolvimento configurado.
 - Arquitetura definida e documentada.
 - API básica funcionando com integração inicial de NLP.
+- Coleta inicial de dados realizada.
 
 ### Sprint 2:
 - Frontend básico funcionando.
 - Busca e resumo automático integrados.
+- Integração com fontes de dados concluída.
 - Testes unitários implementados.
 
 ### Sprint 3:
 - MVP completo e funcional.
 - Interface polida e otimizada.
+- Segurança e autenticação implementadas.
 - Aplicação deployada e pronta para uso.
-
----
