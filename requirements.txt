@@ -6,3 +6,8 @@ torch
 selenium
 openai
 dotenv
+datasets 
+peft 
+accelerate 
+bitsandbytes
+flask

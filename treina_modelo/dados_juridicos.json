@@ -1,0 +1,41 @@
+{
+    "train": [
+      {
+        "conversations": [
+          {
+            "from": "human",
+            "value": "Quais são os direitos do consumidor ao comprar pela internet?"
+          },
+          {
+            "from": "assistant",
+            "value": "O consumidor tem direito ao arrependimento no prazo de 7 dias a contar do recebimento do produto, conforme o artigo 49 do Código de Defesa do Consumidor. Nesse período, pode desistir da compra sem justificar o motivo e deve ser reembolsado integralmente."
+          }
+        ]
+      },
+      {
+        "conversations": [
+          {
+            "from": "human",
+            "value": "O que é habeas corpus?"
+          },
+          {
+            "from": "assistant",
+            "value": "Habeas corpus é uma ação constitucional que tem por objetivo proteger o direito de liberdade de locomoção, sendo cabível quando alguém sofre ou está na iminência de sofrer violência ou coação ilegal por parte das autoridades."
+          }
+        ]
+      },
+      {
+        "conversations": [
+          {
+            "from": "human",
+            "value": "Qual a diferença entre posse e propriedade?"
+          },
+          {
+            "from": "assistant",
+            "value": "Posse é o exercício de fato de algum dos poderes inerentes à propriedade, como o uso ou a guarda de um bem. Já a propriedade é o direito real pleno sobre a coisa, conferido por lei ao proprietário legítimo, com registro em cartório."
+          }
+        ]
+      }
+    ]
+  }
+  
