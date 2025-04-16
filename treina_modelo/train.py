@@ -1,7 +1,7 @@
 import torch
 from datasets import load_dataset, concatenate_datasets
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer, DataCollatorForLanguageModeling
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from peft import LoraConfig, get_peft_model
 
 # Dataset
 print("Carregando datasets...")
@@ -42,11 +42,11 @@ def tokenize(example):
 tokenized_dataset = dataset.map(tokenize, batched=True)
 tokenized_dataset.set_format(type="torch", columns=["input_ids", "attention_mask"])
 
-# Modelo com LoRA
-print("Carregando modelo base com LoRA...")
-model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
-model = prepare_model_for_kbit_training(model)
+# Carrega o modelo sem quantização
+print("Carregando modelo base...")
+model = AutoModelForCausalLM.from_pretrained(model_id)
 
+# Configura LoRA (sem prepare_model_for_kbit_training)
 lora_config = LoraConfig(
     r=8,
     lora_alpha=16,
@@ -68,9 +68,9 @@ args = TrainingArguments(
     logging_steps=10,
     save_total_limit=2,
     learning_rate=2e-4,
-    fp16=True,
+    fp16=False,  # Coloque False se não tiver GPU com suporte a float16
     save_strategy="epoch",
-    evaluation_strategy="no",
+    #evaluation_strategy="no",
 )
 
 trainer = Trainer(
@@ -83,5 +83,6 @@ trainer = Trainer(
 
 print("Iniciando treinamento...")
 trainer.train()
+
 model.save_pretrained("./modelo_juridico")
 tokenizer.save_pretrained("./modelo_juridico")

@@ -1,7 +1,8 @@
-transformers 
-datasets 
-peft 
-accelerate 
-bitsandbytes
 torch
+transformers
+datasets
+accelerate
+peft
 scipy
+sentencepiece
+trl

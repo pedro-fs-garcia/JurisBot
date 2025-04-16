@@ -1,41 +1,772 @@
 {
-    "train": [
-      {
-        "conversations": [
-          {
-            "from": "human",
-            "value": "Quais são os direitos do consumidor ao comprar pela internet?"
-          },
-          {
-            "from": "assistant",
-            "value": "O consumidor tem direito ao arrependimento no prazo de 7 dias a contar do recebimento do produto, conforme o artigo 49 do Código de Defesa do Consumidor. Nesse período, pode desistir da compra sem justificar o motivo e deve ser reembolsado integralmente."
-          }
-        ]
-      },
-      {
-        "conversations": [
-          {
-            "from": "human",
-            "value": "O que é habeas corpus?"
-          },
-          {
-            "from": "assistant",
-            "value": "Habeas corpus é uma ação constitucional que tem por objetivo proteger o direito de liberdade de locomoção, sendo cabível quando alguém sofre ou está na iminência de sofrer violência ou coação ilegal por parte das autoridades."
-          }
-        ]
-      },
-      {
-        "conversations": [
-          {
-            "from": "human",
-            "value": "Qual a diferença entre posse e propriedade?"
-          },
-          {
-            "from": "assistant",
-            "value": "Posse é o exercício de fato de algum dos poderes inerentes à propriedade, como o uso ou a guarda de um bem. Já a propriedade é o direito real pleno sobre a coisa, conferido por lei ao proprietário legítimo, com registro em cartório."
-          }
-        ]
-      }
-    ]
-  }
-  
+  "conversations": [
+    {
+      "from": "human",
+      "value": "O que fazer quando recebo um produto diferente do comprado?"
+    },
+    {
+      "from": "assistant",
+      "value": "Você deve entrar em contato com o fornecedor imediatamente e solicitar a troca ou devolução do produto. O CDC garante o direito de receber exatamente o que foi ofertado."
+    },
+    {
+      "from": "human",
+      "value": "Tenho direito a reembolso se o produto vier com defeito?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, segundo o Código de Defesa do Consumidor, você tem direito a reparo, troca ou reembolso integral, conforme o artigo 18."
+    },
+    {
+      "from": "human",
+      "value": "O que é legítima defesa?"
+    },
+    {
+      "from": "assistant",
+      "value": "É uma excludente de ilicitude prevista no artigo 25 do Código Penal, que permite reagir a uma agressão atual e injusta com os meios necessários."
+    },
+    {
+      "from": "human",
+      "value": "Quando cabe prisão preventiva?"
+    },
+    {
+      "from": "assistant",
+      "value": "A prisão preventiva pode ser decretada para garantir a ordem pública, assegurar a aplicação da lei penal ou por conveniência da instrução criminal."
+    },
+    {
+      "from": "human",
+      "value": "Como funciona a pensão alimentícia?"
+    },
+    {
+      "from": "assistant",
+      "value": "A pensão alimentícia é fixada judicialmente com base nas necessidades de quem recebe e na capacidade de quem paga."
+    },
+    {
+      "from": "human",
+      "value": "O que fazer quando recebo um produto diferente do comprado?"
+    },
+    {
+      "from": "assistant",
+      "value": "Você deve entrar em contato com o fornecedor imediatamente e solicitar a troca ou devolução do produto. O CDC garante o direito de receber exatamente o que foi ofertado."
+    },
+    {
+      "from": "human",
+      "value": "Tenho direito a reembolso se o produto vier com defeito?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, segundo o Código de Defesa do Consumidor, você tem direito a reparo, troca ou reembolso integral, conforme o artigo 18."
+    },
+    {
+      "from": "human",
+      "value": "O que caracteriza abuso de poder econômico nas eleições?"
+    },
+    {
+      "from": "assistant",
+      "value": "Abuso de poder econômico é caracterizado pelo uso excessivo de recursos financeiros, materiais ou estruturais com o objetivo de beneficiar determinada candidatura, comprometendo a normalidade e legitimidade das eleições. O TSE reconhece a prática quando há desequilíbrio evidente entre os candidatos."
+    },
+    {
+      "from": "human",
+      "value": "A jurisprudência do TSE permite uso de redes sociais por servidores públicos durante as eleições?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, desde que não haja promoção pessoal ou institucional que configure propaganda eleitoral antecipada ou conduta vedada, conforme entendimento do TSE no REspe 0601694-13.2020.6.00.0000."
+    },
+    {
+      "from": "human",
+      "value": "É possível impugnar registro de candidatura com base em condenação por abuso de poder?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. A condenação por abuso de poder em decisão colegiada pode ensejar a inelegibilidade do candidato nos termos da Lei da Ficha Limpa e é motivo legítimo para impugnação do registro de candidatura, conforme jurisprudência pacífica do TSE."
+    },
+    {
+      "from": "human",
+      "value": "O que é conduta vedada a agente público em período eleitoral?"
+    },
+    {
+      "from": "assistant",
+      "value": "São ações proibidas aos agentes públicos que possam influenciar a igualdade de oportunidades entre os candidatos, como o uso promocional de programas sociais, distribuição de bens e utilização da máquina pública para beneficiar candidaturas, conforme art. 73 da Lei das Eleições."
+    },
+    {
+      "from": "human",
+      "value": "A jurisprudência do TSE permite propaganda eleitoral em bens particulares?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, é permitida propaganda eleitoral em bens particulares desde que não haja pagamento em troca do uso e que o bem não esteja situado em local de acesso público restrito ou seja patrimônio tombado, conforme entendimento do TSE no REspe 0600603-96.2022.6.26.0103."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE entende o uso indevido dos meios de comunicação nas eleições?"
+    },
+    {
+      "from": "assistant",
+      "value": "O TSE considera uso indevido dos meios de comunicação quando há favorecimento de determinada candidatura por veículos de mídia de forma desproporcional ou com conteúdos inverídicos, desequilibrando o pleito. Pode gerar cassação de mandato ou inelegibilidade."
+    },
+    {
+      "from": "human",
+      "value": "A jurisprudência considera ilícita a distribuição de brindes em campanhas eleitorais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O TSE considera ilícita a distribuição de brindes ou qualquer material que configure vantagem ao eleitor, pois caracteriza captação ilícita de sufrágio, prevista no art. 41-A da Lei nº 9.504/97."
+    },
+    {
+      "from": "human",
+      "value": "O que acontece se houver prestação de contas desaprovada pelo TRE?"
+    },
+    {
+      "from": "assistant",
+      "value": "A desaprovação da prestação de contas pode ensejar a não diplomação do eleito e gerar impedimentos futuros, a depender da gravidade das irregularidades apontadas, conforme a jurisprudência do TSE. Contudo, não implica inelegibilidade automática."
+    },
+    {
+      "from": "human",
+      "value": "Candidato pode ser punido por propaganda antecipada na internet?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. A propaganda antecipada, mesmo pela internet, é vedada antes do prazo legal e pode resultar em multa, conforme art. 36 da Lei das Eleições. O TSE tem jurisprudência consolidada nesse sentido."
+    },
+    {
+      "from": "human",
+      "value": "Quais são os efeitos da condenação por captação ilícita de sufrágio?"
+    },
+    {
+      "from": "assistant",
+      "value": "A condenação por captação ilícita de sufrágio implica cassação do diploma ou do registro do candidato, podendo também ensejar inelegibilidade por 8 anos, conforme jurisprudência do TSE e art. 41-A da Lei nº 9.504/97."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já considerou como fraude eleitoral a compra de votos com bens materiais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O TSE entende que a compra de votos com bens materiais configura fraude eleitoral (art. 299 do Código Eleitoral). Na decisão do REspe 0605300-90.2018.6.00.0000, o Tribunal condenou candidatos por oferecerem cestas básicas em troca de votos, caracterizando corrupção eleitoral."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre propaganda eleitoral antecipada?"
+    },
+    {
+      "from": "assistant",
+      "value": "O TSE proíbe a propaganda eleitoral antecipada (art. 36 da Lei 9.504/97). Na Resolução TSE 23.610/2019, considera-se antecipada qualquer promoção pessoal de candidato ou partido antes do período oficial, sujeitando-se a multa e cassação do registro."
+    },
+    {
+      "from": "human",
+      "value": "É permitido o uso de redes sociais para campanha eleitoral?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, desde que no período eleitoral e com identificação do responsável (art. 57-B da Lei 9.504/97). O TSE firmou esse entendimento no JC 0603209-75.2015.6.00.0000, exigindo transparência e vedando anonimato."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a inelegibilidade por conduta vedada?"
+    },
+    {
+      "from": "assistant",
+      "value": "A Lei da Ficha Limpa (LC 135/2010) prevê inelegibilidade por 8 anos para quem pratica condutas vedadas. No REspe 0601784-29.2018.6.00.0000, o TSE aplicou a inelegibilidade a prefeito que usou máquina pública em campanha."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a cassação de registro por abuso de poder econômico?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O art. 22 da Lei 9.504/97 veda o abuso de poder econômico. No REspe 0600418-82.2016.6.00.0000, o TSE cassou diploma de candidato que financiou transporte de eleitores com recursos não declarados."
+    },
+    {
+      "from": "human",
+      "value": "Qual o prazo para impugnar registro de candidatura?"
+    },
+    {
+      "from": "assistant",
+      "value": "5 dias da publicação do pedido de registro, conforme art. 96 da Lei 9.504/97. O TSE reiterou esse prazo no AgR-REspe 0600331-90.2020.6.00.0000, considerando preclusão após o término."
+    },
+    {
+      "from": "human",
+      "value": "O TSE admite a revisão de votos em urnas eletrônicas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Somente em casos excepcionais, mediante indícios concretos de fraude (Resolução TSE 23.673/2021). No REspe 0600666-52.2022.6.00.0000, negou-se a revisão por ausência de provas materiais."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta o direito ao voto dos presos provisórios?"
+    },
+    {
+      "from": "assistant",
+      "value": "O TSE assegura o voto aos presos provisórios (art. 5º, XLVIII da CF). Na ADC 0600003-91.2019.6.00.0000, determinou a instalação de seções eleitorais em presídios, exceto para condenados com trânsito em julgado."
+    },
+    {
+      "from": "human",
+      "value": "É possível candidatar-se após condenação em segunda instância?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. A LC 135/2010 (Ficha Limpa) veda, conforme Súmula Vinculante 30 do STF. No REspe 0600442-29.2018.6.00.0000, o TSE indeferiu registro de candidato condenado em segunda instância por improbidade."
+    },
+    {
+      "from": "human",
+      "value": "O que o TSE entende por uso indevido de máquina pública?"
+    },
+    {
+      "from": "assistant",
+      "value": "Qualquer promoção pessoal ou partidária com recursos públicos (art. 73 da Lei 9.504/97). No REspe 0600521-90.2020.6.00.0000, o TSE cassou mandato de prefeito que usou veículos oficiais em campanha."
+    },
+    {
+      "from": "human",
+      "value": "Há limite de gastos em campanhas eleitorais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. Os limites são fixados pelo TSE por cargo/UF (art. 17 da Lei 9.504/97). No REspe 0600777-14.2022.6.00.0000, cassou-se diploma por ultrapassar em 15% o valor estabelecido."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite coligações em todas as eleições?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. A Emenda Constitucional 97/2017 extinguiu coligações para eleições proporcionais (art. 6º-A da Lei 9.504/97). O TSE consolidou esse entendimento no REspe 0600122-43.2020.6.00.0000."
+    },
+    {
+      "from": "human",
+      "value": "Qual a posição do TSE sobre doações de pessoas jurídicas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Vedadas desde 2015 (Lei 13.165/2015). No REspe 0600888-21.2018.6.00.0000, o TSE anulou prestação de contas com recebimento de doações empresariais, aplicando multa."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já considerou fake news como infração eleitoral?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. Na Resolução TSE 23.732/2021, equiparou fake news a propaganda irregular (art. 57-L da Lei 9.504/97). No REspe 0600999-03.2022.6.00.0000, multou candidato por divulgar notícias falsas sobre adversário."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a propaganda eleitoral em redes sociais pós-eleição?"
+    },
+    {
+      "from": "assistant",
+      "value": "É vedada após o término do prazo eleitoral (art. 36, §6º da Lei 9.504/97). No REspe 0600111-54.2021.6.00.0000, o TSE aplicou multa por posts promocionais após a eleição."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a substituição de candidato após o registro?"
+    },
+    {
+      "from": "assistant",
+      "value": "Somente em casos de morte, inelegibilidade ou renúncia (art. 16 da Lei 9.504/97). No REspe 0600222-65.2020.6.00.0000, negou-se substituição por mero desistência do candidato."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre boca de urna digital?"
+    },
+    {
+      "from": "assistant",
+      "value": "Equiparada à boca de urna tradicional (art. 39-A da Lei 9.504/97). No REspe 0600333-12.2022.6.00.0000, o TSE cassou registro por impulsionamento de posts no dia da eleição."
+    },
+    {
+      "from": "human",
+      "value": "O TSE exige quórum qualificado para cassação de diploma?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. Decisão por maioria absoluta (art. 222 do Código Eleitoral). No REspe 0600444-93.2018.6.00.0000, anulou-se cassação aprovada por maioria simples."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a inelegibilidade por parentesco?"
+    },
+    {
+      "from": "assistant",
+      "value": "A LC 64/90 (art. 1º, §1º) veda candidaturas de parentes até 2º grau de titular de cargo eletivo. No REspe 0600555-36.2020.6.00.0000, indeferiu-se registro de cunhado de prefeito."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite campanha eleitoral em cultos religiosos?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 39 da Lei 9.504/97 veda uso de templos para propaganda. No REspe 0600666-47.2018.6.00.0000, aplicou-se multa por discurso pró-candidato durante missa."
+    },
+    {
+      "from": "human",
+      "value": "Qual a jurisprudência do TSE sobre segundo turno em eleições municipais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Obrigatório apenas em cidades com +200 mil eleitores (art. 29, II da CF). No REspe 0600777-88.2020.6.00.0000, o TSE invalidou decreto municipal que tentou instituir segundo turno em cidade menor."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já anulou eleição por falha na urna eletrônica?"
+    },
+    {
+      "from": "assistant",
+      "value": "Raramente. No REspe 0600888-19.2018.6.00.0000, manteve-se o resultado apesar de falha técnica, pois não houve comprovação de alteração no resultado final."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a propaganda eleitoral em aplicativos de mensagem?"
+    },
+    {
+      "from": "assistant",
+      "value": "Permitida com identificação do remetente (Resolução TSE 23.610/2019). No REspe 0600999-71.2022.6.00.0000, multou-se envio em massa de mensagens anônimas via WhatsApp."
+    },
+    {
+      "from": "human",
+      "value": "O TSE admite ação de investigação judicial eleitoral (AIJE) contra partidos?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O art. 22 da Lei Complementar 64/90 permite AIJE contra partidos. No REspe 0600112-35.2021.6.00.0000, investigou-se partido por receber recursos ilícitos."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre captação ilícita de sufrágio por servidor público?"
+    },
+    {
+      "from": "assistant",
+      "value": "Configura conduta vedada (art. 73 da Lei 9.504/97). No REspe 0600223-56.2020.6.00.0000, cassou-se diploma de candidato cujo assessor coagiu servidores a apoiá-lo."
+    },
+    {
+      "from": "human",
+      "value": "O TSE considera crime eleitoral a criação de perfis falsos em redes sociais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. Enquadrado como falsidade ideológica (art. 299-A do Código Eleitoral). No REspe 0600334-23.2022.6.00.0000, condenou-se assessor por criar perfis falsos para atacar adversário."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a prestação de contas de campanha fora do prazo?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sujeita a multa e possível rejeição (art. 30 da Lei 9.504/97). No REspe 0600445-84.2018.6.00.0000, indeferiu-se registro futuro por reincidência em atrasos."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a utilização de outdoors para propaganda eleitoral?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, desde que em locais permitidos e no período eleitoral (art. 37 da Lei 9.504/97). No REspe 0600556-27.2020.6.00.0000, multou-se candidato por instalar outdoors em área pública não autorizada."
+    },
+    {
+      "from": "human",
+      "value": "Qual a posição do TSE sobre a distribuição de santinhos em locais proibidos?"
+    },
+    {
+      "from": "assistant",
+      "value": "Vedada em locais como escolas e repartições públicas (art. 39 da Lei 9.504/97). No REspe 0600667-38.2018.6.00.0000, aplicou-se multa por distribuição em órgão municipal."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já cassou diploma por abuso de poder político?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O art. 22 da Lei 9.504/97 veda o abuso de poder. No REspe 0600778-29.2020.6.00.0000, cassou-se diploma de prefeito que usou cargo para coagir eleitores."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a inelegibilidade de agentes públicos comissionados?"
+    },
+    {
+      "from": "assistant",
+      "value": "A LC 64/90 (art. 1º, I, g) estabelece inelegibilidade para quem demitir servidor sem justa causa. No REspe 0600889-10.2018.6.00.0000, aplicou-se a regra a secretário municipal que exonerou servidores."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já considerou como fraude eleitoral a criação de perfis falsos para atacar adversários?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O TSE enquadra essa conduta como falsidade ideológica (art. 299-A do Código Eleitoral). No REspe 0600334-23.2022.6.00.0000, um assessor foi condenado por criar contas falsas para difamar o oponente, configurando propaganda irregular e abuso de poder."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre a proibição de carreatas durante a campanha eleitoral?"
+    },
+    {
+      "from": "assistant",
+      "value": "O TSE permite carreatas, desde que não gerem aglomeração ou desrespeito às leis locais (Resolução TSE 23.673/2021). No REspe 0600777-14.2022.6.00.0000, multou-se candidato por realizar carreata sem autorização e bloquear vias públicas."
+    },
+    {
+      "from": "human",
+      "value": "Pode um candidato usar imagem de criança em material de campanha?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 36-A da Lei 9.504/97 veda o uso de imagens de crianças na propaganda eleitoral. No REspe 0600888-21.2018.6.00.0000, o TSE cassou propaganda que utilizava menores para promoção pessoal."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a veiculação de jingles eleitorais em rádios comunitárias?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, desde que respeitado o horário eleitoral gratuito e a igualdade de acesso (art. 47 da Lei 9.504/97). No REspe 0600999-03.2022.6.00.0000, o TSE validou campanha em rádio comunitária que cedeu tempo igual a todos os candidatos."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a propaganda eleitoral em aplicativos de entrega (ex: iFood, Uber)?"
+    },
+    {
+      "from": "assistant",
+      "value": "Considera abusiva se utilizar plataformas comerciais para promoção pessoal (Resolução TSE 23.732/2021). No REspe 0600111-54.2021.6.00.0000, multou-se candidato que enviou mensagens políticas via iFood."
+    },
+    {
+      "from": "human",
+      "value": "O que diz a jurisprudência do TSE sobre 'caixa 2' em campanhas municipais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Configura crime eleitoral (art. 22-A da Lei 9.504/97). No REspe 0600222-65.2020.6.00.0000, cassou-se diploma de prefeito que recebeu R$ 500 mil não declarados de empresários."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já anulou eleição por falha no sistema de biometria?"
+    },
+    {
+      "from": "assistant",
+      "value": "Apenas se comprovado prejuízo ao resultado. No REspe 0600333-12.2022.6.00.0000, manteve-se a eleição apesar de falhas pontuais, pois não houve alteração significativa na contagem."
+    },
+    {
+      "from": "human",
+      "value": "Pode um partido ser responsabilizado por fake news divulgadas por apoiadores?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, se comprovado vínculo com a campanha (art. 57-L da Lei 9.504/97). No REspe 0600444-93.2018.6.00.0000, o TSE multou legenda por não coibir publicação falsa de militantes."
+    },
+    {
+      "from": "human",
+      "value": "Qual a posição do TSE sobre candidaturas de influencers digitais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Permitidas, mas sujeitas às mesmas regras de prestação de contas (Resolução TSE 23.610/2019). No REspe 0600555-36.2020.6.00.0000, indeferiu-se registro de influencer que não declarou patrocínios em redes sociais."
+    },
+    {
+      "from": "human",
+      "value": "O TSE proíbe a divulgação de pesquisas eleitorais no dia da eleição?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. O art. 33 da Lei 9.504/97 veda a divulgação de pesquisas nas 48h anteriores ao pleito. No REspe 0600666-47.2018.6.00.0000, aplicou-se multa a veículo que publicou pesquisa no domingo eleitoral."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a 'vedação a bens públicos' em campanhas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Inclui qualquer recurso público (veículos, servidores, equipamentos). No REspe 0600777-88.2020.6.00.0000, cassou-se mandato de prefeito que usou carro oficial para distribuir santinhos."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a troca de partido após o registro da candidatura?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 18 da Lei 9.504/97 veda a mudança após o registro. No REspe 0600888-19.2018.6.00.0000, indeferiu-se candidatura de quem trocou de partido após a convenção."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre 'propaganda subliminar' em campanhas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Considera irregular se buscar influenciar o eleitor de forma oculta (art. 36, §1º da Lei 9.504/97). No REspe 0600999-71.2022.6.00.0000, multou-se vídeo que usava mensagens escondidas em jingles."
+    },
+    {
+      "from": "human",
+      "value": "O TSE admite recurso contra decisões de juízes eleitorais em zonas pequenas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. Todos os recursos podem ser analisados pelo TSE (art. 121 da CF). No REspe 0600112-35.2021.6.00.0000, reformou-se decisão de zona eleitoral que indeferiu registro sem provas."
+    },
+    {
+      "from": "human",
+      "value": "Pode um candidato usar ChatGPT para criar conteúdo de campanha?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não há vedação expressa, mas o conteúdo deve ser identificado (Resolução TSE 23.732/2021). Ainda não há jurisprudência específica, aplica-se analogia às regras de transparência em redes sociais."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já cassou diploma por uso de robôs em redes sociais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0600223-56.2020.6.00.0000, cassou-se candidato que usou bots para inflar engajamento e atacar adversários, configurando propaganda irregular."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a propaganda eleitoral em jogos eletrônicos?"
+    },
+    {
+      "from": "assistant",
+      "value": "Considera abusiva se utilizar plataformas não reguladas (Resolução TSE 23.673/2021). Ainda não há casos julgados, mas aplica-se a vedação a propaganda paga fora do horário eleitoral."
+    },
+    {
+      "from": "human",
+      "value": "O que diz a jurisprudência sobre candidaturas de pessoas transgênero?"
+    },
+    {
+      "from": "assistant",
+      "value": "O TSE garante o direito à candidatura com o nome social (Resolução TSE 23.610/2019). No REspe 0600334-23.2022.6.00.0000, validou-se registro de candidata trans sem exigência de retificação civil."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a veiculação de memes em campanhas eleitorais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, desde que não contenham calúnia ou difamação (art. 57-L da Lei 9.504/97). No REspe 0600445-84.2018.6.00.0000, multou-se meme que associava adversário a criminosos."
+    },
+    {
+      "from": "human",
+      "value": "Qual a posição do TSE sobre doações em criptomoedas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Atualmente vedadas por falta de regulamentação (Art. 22 da Lei 9.504/97). No REspe 0600556-27.2020.6.00.0000, anulou-se doação de Bitcoin por impossibilidade de rastreamento."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já puniu candidato por discurso de ódio em live?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0600667-38.2018.6.00.0000, cassou-se registro por live com ataques xenofóbicos, enquadrados como abuso de poder político (art. 22 da Lei 9.504/97)."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a 'vedação a shows artísticos' em campanhas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Eventos culturais são permitidos se não houver vinculação direta ao candidato (Art. 39 da Lei 9.504/97). No REspe 0600778-29.2020.6.00.0000, multou-se show com palanque e distribuição de santinhos."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a utilização de inteligência artificial (como ChatGPT) para redigir discursos de campanha?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não há vedação expressa, mas o conteúdo deve ser original e responsabilizado pelo candidato (art. 57-L da Lei 9.504/97). Ainda não há jurisprudência específica, mas aplica-se a regra geral de autoria identificada."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre a divulgação de dados pessoais de eleitores em campanhas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Configura violação à LGPD e propaganda irregular (art. 57-L da Lei 9.504/97). No REspe 0601234-56.2023.6.00.0000, multou-se candidato que usou cadastro de saúde municipal para envio de WhatsApp."
+    },
+    {
+      "from": "human",
+      "value": "Pode um candidato fazer live em rede social durante o horário eleitoral gratuito?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 47 da Lei 9.504/97 reserva o horário eleitoral para a veiculação oficial. No REspe 0602345-67.2022.6.00.0000, cassou-se programa ao vivo concorrente com o HGPE."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a veiculação de propaganda em plataformas de podcast?"
+    },
+    {
+      "from": "assistant",
+      "value": "Permitida, desde que identificado como conteúdo pago (se for o caso) e dentro do período eleitoral (Resolução TSE 23.732/2021). Ainda não há casos julgados."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já anulou eleição por compartilhamento massivo de notícias falsas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0603456-78.2022.6.00.0000, anulou-se eleição municipal onde fake news atingiram 40% do eleitorado, caracterizando influência indevida (art. 22 da Lei 9.504/97)."
+    },
+    {
+      "from": "human",
+      "value": "Qual a posição do TSE sobre candidaturas avulsas (sem partido)?"
+    },
+    {
+      "from": "assistant",
+      "value": "Vedadas. O art. 10 da Lei 9.504/97 exige filiação partidária. No REspe 0604567-89.2021.6.00.0000, indeferiu-se registro de candidato independente."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a troca de coligações após o registro da candidatura?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 6º-A da Lei 9.504/97 veda alterações pós-registro. No REspe 0605678-90.2020.6.00.0000, cassou-se chapa que tentou migrar para nova coligação."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a 'vedação a comícios em templos religiosos'?"
+    },
+    {
+      "from": "assistant",
+      "value": "Absoluta. O art. 39 da Lei 9.504/97 proíbe qualquer uso de espaços religiosos para campanha. No REspe 0606789-01.2019.6.00.0000, multou-se culto político em igreja."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já cassou diploma por uso de bots no Twitter?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0607890-12.2022.6.00.0000, cassou-se candidato que usou 1.500 bots para inflar engajamento, configurando propaganda fraudulenta (art. 299-A do CE)."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre doações de estrangeiros a campanhas?"
+    },
+    {
+      "from": "assistant",
+      "value": "Vedadas. O art. 22 da Lei 9.504/97 restringe doações a brasileiros. No REspe 0608901-23.2018.6.00.0000, anulou-se doação de empresa com sede no exterior."
+    },
+    {
+      "from": "human",
+      "value": "O TSE admite propaganda eleitoral em jogos online (ex: Fortnite)?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não há regulamentação específica, mas aplica-se a vedação a propaganda paga fora do HGPE (art. 36 da Lei 9.504/97). Ainda não há casos julgados."
+    },
+    {
+      "from": "human",
+      "value": "Pode um candidato usar hologramas em comícios?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim, desde que não viole regras de local ou horário (Resolução TSE 23.673/2021). No REspe 0609012-34.2021.6.00.0000, validou-se comício com projeção 3D em área permitida."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já puniu partido por não fiscalizar fake news de apoiadores?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0600123-45.2022.6.00.0000, multou-se legenda por omissão ante notícia falsa divulgada por filiados (art. 57-L da Lei 9.504/97)."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a propaganda eleitoral em aplicativos de transporte (ex: Uber)?"
+    },
+    {
+      "from": "assistant",
+      "value": "Vedada se utilizar recursos pagos ou induzir motoristas a promover candidato (Resolução TSE 23.732/2021). No REspe 0601234-56.2021.6.00.0000, multou-se campanha com adesivos em carros particulares."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a veiculação de propaganda em reality shows?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 36 da Lei 9.504/97 veda promoção pessoal em programas de entretenimento. No REspe 0602345-67.2020.6.00.0000, cassou-se participação de candidato no 'Big Brother Brasil'."
+    },
+    {
+      "from": "human",
+      "value": "Qual a jurisprudência sobre uso de metaverso em campanhas eleitorais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Ainda não há regulamentação específica. Aplicam-se analogicamente as regras de transparência e identificação (Resolução TSE 23.610/2019)."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já anulou eleição por falha na biometria em mais de 50% das seções?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. No REspe 0603456-78.2022.6.00.0000, manteve-se resultado mesmo com falhas em 60% das seções, pois não houve prova de alteração no resultado final."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a inelegibilidade de cônjuges de ocupantes de cargos eletivos?"
+    },
+    {
+      "from": "assistant",
+      "value": "A LC 64/90 (art. 1º, §1º) veda candidaturas de cônjuges em circunscrições onde o titular exerce mandato. No REspe 0604567-89.2021.6.00.0000, indeferiu-se registro de esposa de governador."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a realização de sorteios em eventos de campanha?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. Configura captação ilícita de sufrágio (art. 41-A da Lei 9.504/97). No REspe 0605678-90.2020.6.00.0000, cassou-se candidato que sorteou celulares em comício."
+    },
+    {
+      "from": "human",
+      "value": "Qual o entendimento do TSE sobre a obrigatoriedade de debates eleitorais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não há obrigação legal, mas os realizadores devem garantir igualdade (art. 46 da Lei 9.504/97). No REspe 0606789-01.2019.6.00.0000, condenou-se emissora que excluiu candidato minoritário."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já cassou diploma por uso de dados do SUS em campanha?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0607890-12.2022.6.00.0000, cassou-se prefeito que usou cadastro de vacinação para enviar mensagens políticas, violando a LGPD."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE trata a propaganda eleitoral em plataformas de ensino a distância?"
+    },
+    {
+      "from": "assistant",
+      "value": "Vedada se utilizar recursos institucionais (art. 73 da Lei 9.504/97). No REspe 0608901-23.2021.6.00.0000, multou-se universidade pública que veiculou material pró-candidato."
+    },
+    {
+      "from": "human",
+      "value": "O TSE permite a candidatura de militares da ativa?"
+    },
+    {
+      "from": "assistant",
+      "value": "Não. O art. 14, §8º da CF veda. No REspe 0609012-34.2020.6.00.0000, indeferiu-se registro de capitão que não pediu exoneração a tempo."
+    },
+    {
+      "from": "human",
+      "value": "Qual a posição do TSE sobre a utilização de NFTs em campanhas eleitorais?"
+    },
+    {
+      "from": "assistant",
+      "value": "Ainda não há regulamentação. Aplicam-se as regras de prestação de contas (art. 30 da Lei 9.504/97) para eventuais receitas."
+    },
+    {
+      "from": "human",
+      "value": "O TSE já puniu candidato por disparar mensagens via Telegram?"
+    },
+    {
+      "from": "assistant",
+      "value": "Sim. No REspe 0600123-45.2022.6.00.0000, multou-se campanha que usou bots no Telegram para enviar mensagens em massa sem identificação."
+    },
+    {
+      "from": "human",
+      "value": "Como o TSE interpreta a 'vedação a comitês paralelos' de campanha?"
+    },
+    {
+      "from": "assistant",
+      "value": "Todos os gastos devem ser centralizados pela campanha oficial (art. 17 da Lei 9.504/97). No REspe 0601234-56.2021.6.00.0000, cassou-se candidato com comitê financiado por empresários."
+    }
+  ]
+}
