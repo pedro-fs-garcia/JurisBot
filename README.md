@@ -1,5 +1,5 @@
 ---
-title: First Agent Template
+title: jurisbot
 emoji: ⚡
 colorFrom: pink
 colorTo: yellow
