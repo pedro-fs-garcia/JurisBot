@@ -1,5 +1,5 @@
 ---
-title: jurisbot
+title: JurisBot
 emoji: ⚡
 colorFrom: pink
 colorTo: yellow
