@@ -8,7 +8,7 @@ class DuckDuckGoSearchTool(Tool):
     inputs = {'query': {'type': 'string', 'description': 'The search query to perform.'}}
     output_type = "string"
 
-    def __init__(self, max_results=10, **kwargs):
+    def __init__(self, max_results=5, **kwargs):
         super().__init__()
         self.max_results = max_results
         try:
