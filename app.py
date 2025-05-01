@@ -4,6 +4,7 @@ import requests
 import pytz
 import yaml
 from tools.buscador_dod import BuscadorDOD
+from tools.buscador_tjdft import BuscadorTJDFT
 from tools.final_answer import FinalAnswerTool
 from huggingface_hub.utils import HfHubHTTPError
 import dotenv
@@ -20,20 +21,73 @@ dotenv.load_dotenv()
 
 @tool
 def buscar_jurisprudencia(termos: str) -> str:
-    """Ferramenta para buscar jurisprudências em tribunais brasileiros.
-    
+    """Ferramenta que realiza uma busca por jurisprudências relevantes usando os termos fornecidos.
+
+    Esta ferramenta consulta um repositório de jurisprudência de tribunais brasileiros com base
+    nos termos informados. Deve ser usada quando o objetivo for encontrar decisões judiciais
+    relacionadas a um tema específico, como 'dano moral', 'responsabilidade civil', etc.
+
     Args:
-        termos: Termos de busca para a jurisprudência
+        termos (str): Palavras-chave ou expressão descritiva que será usada na busca jurisprudencial.
+
+    Returns:
+        str: Resultados da pesquisa em formato JSON contendo decisões encontradas, ou uma mensagem de erro caso a consulta falhe.
     """
     try:
-        # Aqui você pode implementar a lógica de busca real usando APIs dos tribunais
-        # Por enquanto, retornaremos um exemplo simulado
         dod = BuscadorDOD()
         resultados = dod.forward(termos)
         return json.dumps(resultados, ensure_ascii=False, indent=4)
     
     except Exception as e:
-        return f"Erro ao buscar jurisprudência: {str(e)}"
+        return f"Erro ao buscar jurisprudência em Dizer o Direito: {str(e)}"
+
+
+@tool
+def buscar_jurisprudencia_tjdft(query:str, filtros:Dict[str, str] | None = None) -> str:
+    """
+    Realiza uma busca por jurisprudências diretamente na API oficial do Tribunal de Justiça do Distrito Federal e Territórios (TJDFT).
+
+    Esta ferramenta deve ser usada para consultar decisões judiciais específicas do TJDFT. 
+    Permite a inclusão de filtros avançados como nome do relator, data do julgamento e outros campos indexados pela API.
+
+    Args:
+        query (str): Termos principais da pesquisa jurisprudencial. 
+                     Por exemplo: "dano moral", "violência doméstica", "revisão contratual".
+                     
+        filtros (Dict[str, str] | None): Filtros adicionais no formato chave:valor.
+                     Exemplos de campos aceitos:
+                     - "nomeRelator": nome do relator da decisão
+                     - "nomeRevisor": nome do revisor
+                     - "dataJulgamento": data do julgamento no formato "YYYY-MM-DD"
+                     - "orgaoJulgador": nome do órgão julgador
+
+    Returns:
+        str: Resumo formatado dos resultados encontrados, contendo o número do processo, nome do relator e ementa.
+             Caso ocorra um erro ou nenhum resultado seja encontrado, retorna uma mensagem adequada.
+    """
+    try:
+        buscador = BuscadorTJDFT()
+        return buscador.forward(query, filtros)
+    except Exception as e:
+        return f"Erro ao buscar jurisprudência do TJDF: {str(e)}"
+
+
+@tool
+def buscar_processo(proc:str) -> str:
+    """Recupera informações detalhadas sobre um processo judicial específico a partir de seu número.
+
+    Esta ferramenta deve ser usada quando se deseja obter dados de um processo judicial já identificado
+    por seu número único (ex: número CNJ). Ela retorna informações como o andamento, partes envolvidas,
+    tribunal responsável, classe processual, e outros detalhes relevantes.
+
+    Args:
+        proc (str): Número completo do processo judicial no formato oficial (ex: '0701234-56.2021.8.07.0001').
+
+    Returns:
+        str: Resumo das informações disponíveis sobre o processo informado, ou uma mensagem de erro caso não seja encontrado.
+    """
+    return
+
 
 @tool
 def formatar_resposta_juridica(
