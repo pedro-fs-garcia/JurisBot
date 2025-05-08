@@ -165,7 +165,7 @@ def create_model_with_fallback():
                 max_tokens=2096,
                 temperature=0.5,
                 custom_role_conversions=None,
-                token=os.getenv("HF_API_TOKEN")
+                # token=os.getenv("HF_API_TOKEN")
             )
             # Teste opcional: fazer uma chamada pequena pra garantir
             model(
