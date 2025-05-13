@@ -20,18 +20,20 @@ dotenv.load_dotenv()
 
 
 @tool
-def buscar_jurisprudencia(termos: str) -> str:
-    """Ferramenta que realiza uma busca por jurisprudências relevantes usando os termos fornecidos.
+def buscar_jurisprudencia(termos: str, tribunal:str|None = None, limit:int = 5) -> str:
+    """Tool that performs a search for relevant case law using the provided terms.
 
-    Esta ferramenta consulta um repositório de jurisprudência de tribunais brasileiros com base
-    nos termos informados. Deve ser usada quando o objetivo for encontrar decisões judiciais
-    relacionadas a um tema específico, como 'dano moral', 'responsabilidade civil', etc.
+    This tool queries a repository of Brazilian court decisions based on
+    the provided terms. It should be used when the objective is to find judicial decisions
+    related to a specific topic, such as 'moral damages', 'civil liability', etc.
 
     Args:
-        termos (str): Palavras-chave ou expressão descritiva que será usada na busca jurisprudencial.
+        termos (str): Keywords or descriptive expression that will be used in the case law search.
+        tribunal(str): Name of the brazilian court that will be used in the case law search.
+        limit: (int): Number to limit the number of results per search
 
     Returns:
-        str: Resultados da pesquisa em formato JSON contendo decisões encontradas, ou uma mensagem de erro caso a consulta falhe.
+        str: Search results in JSON format containing found decisions, or an error message if the query fails.
     """
     try:
         dod = BuscadorDOD()
@@ -39,52 +41,52 @@ def buscar_jurisprudencia(termos: str) -> str:
         return json.dumps(resultados, ensure_ascii=False, indent=4)
     
     except Exception as e:
-        return f"Erro ao buscar jurisprudência em Dizer o Direito: {str(e)}"
+        return f"Error searching case law in Dizer o Direito: {str(e)}"
 
 
 @tool
 def buscar_jurisprudencia_tjdft(query:str, filtros:Dict[str, str] | None = None) -> str:
     """
-    Realiza uma busca por jurisprudências diretamente na API oficial do Tribunal de Justiça do Distrito Federal e Territórios (TJDFT).
+    Tool that performs a search for case law directly in the official API of the Court of Justice of the Federal District and Territories (TJDFT).
 
-    Esta ferramenta deve ser usada para consultar decisões judiciais específicas do TJDFT. 
-    Permite a inclusão de filtros avançados como nome do relator, data do julgamento e outros campos indexados pela API.
+    This tool should be used to consult specific judicial decisions from TJDFT.
+    Allows for advanced filters such as judge's name, judgment date, and other fields indexed by the API.
 
     Args:
-        query (str): Termos principais da pesquisa jurisprudencial. 
-                     Por exemplo: "dano moral", "violência doméstica", "revisão contratual".
+        query (str): Main terms of the case law search.
+                     For example: "moral damages", "domestic violence", "contract review".
                      
-        filtros (Dict[str, str] | None): Filtros adicionais no formato chave:valor.
-                     Exemplos de campos aceitos:
-                     - "nomeRelator": nome do relator da decisão
-                     - "nomeRevisor": nome do revisor
-                     - "dataJulgamento": data do julgamento no formato "YYYY-MM-DD"
-                     - "orgaoJulgador": nome do órgão julgador
+        filtros (Dict[str, str] | None): Additional filters in key:value format.
+                     Examples of accepted fields:
+                     - "nomeRelator": name of the decision's judge
+                     - "nomeRevisor": name of the reviewer
+                     - "dataJulgamento": judgment date in "YYYY-MM-DD" format
+                     - "orgaoJulgador": name of the judging body
 
     Returns:
-        str: Resumo formatado dos resultados encontrados, contendo o número do processo, nome do relator e ementa.
-             Caso ocorra um erro ou nenhum resultado seja encontrado, retorna uma mensagem adequada.
+        str: Formatted summary of found results, containing the process number, judge's name, and summary.
+             If an error occurs or no results are found, returns an appropriate message.
     """
     try:
         buscador = BuscadorTJDFT()
         return buscador.forward(query, filtros)
     except Exception as e:
-        return f"Erro ao buscar jurisprudência do TJDF: {str(e)}"
+        return f"Error searching TJDFT case law: {str(e)}"
 
 
 @tool
 def buscar_processo(proc:str) -> str:
-    """Recupera informações detalhadas sobre um processo judicial específico a partir de seu número.
+    """Tool that retrieves detailed information about a specific judicial process from its number.
 
-    Esta ferramenta deve ser usada quando se deseja obter dados de um processo judicial já identificado
-    por seu número único (ex: número CNJ). Ela retorna informações como o andamento, partes envolvidas,
-    tribunal responsável, classe processual, e outros detalhes relevantes.
+    This tool should be used when you want to obtain data from a judicial process already identified
+    by its unique number (e.g., CNJ number). It returns information such as progress, involved parties,
+    responsible court, process class, and other relevant details.
 
     Args:
-        proc (str): Número completo do processo judicial no formato oficial (ex: '0701234-56.2021.8.07.0001').
+        proc (str): Complete judicial process number in official format (e.g., '0701234-56.2021.8.07.0001').
 
     Returns:
-        str: Resumo das informações disponíveis sobre o processo informado, ou uma mensagem de erro caso não seja encontrado.
+        str: Summary of available information about the informed process, or an error message if not found.
     """
     return
 
@@ -97,23 +99,23 @@ def formatar_resposta_juridica(
     legislacao: Optional[List[str]] = None,
     referencias: Optional[List[str]] = None
 ) -> str:
-    """Ferramenta para formatar respostas jurídicas de forma estruturada e legível.
+    """Tool for formatting legal responses in a structured and readable way.
     
     Args:
-        titulo: Título da resposta
-        conteudo: Conteúdo principal da resposta
-        jurisprudencias: Lista de jurisprudências relevantes
-        legislacao: Lista de dispositivos legais citados
-        referencias: Lista de referências adicionais
+        titulo: Title of the response
+        conteudo: Main content of the response
+        jurisprudencias: List of relevant case law
+        legislacao: List of cited legal provisions
+        referencias: List of additional references
     """
     try:
-        # Estrutura base da resposta em markdown
+        # Base response structure in markdown
         resposta = f"# {titulo}\n\n"
         
         # Conteúdo principal
         resposta += f"## Análise\n{conteudo}\n\n"
         
-        # Seção de jurisprudências
+        # Case law section
         if jurisprudencias:
             resposta += "## Jurisprudências Relevantes\n"
             for jur in jurisprudencias:
@@ -123,14 +125,14 @@ def formatar_resposta_juridica(
                 resposta += f"**Ementa:** {jur.get('ementa', '')}\n"
                 resposta += f"**Decisão:** {jur.get('decisao', '')}\n\n"
         
-        # Seção de legislação
+        # Legislation section
         if legislacao:
             resposta += "## Legislação Citada\n"
             for leg in legislacao:
                 resposta += f"- {leg}\n"
             resposta += "\n"
         
-        # Seção de referências
+        # References section
         if referencias:
             resposta += "## Referências\n"
             for ref in referencias:
@@ -138,7 +140,7 @@ def formatar_resposta_juridica(
         
         return resposta
     except Exception as e:
-        return f"Erro ao formatar resposta: {str(e)}"
+        return f"Error formatting response: {str(e)}"
 
 final_answer = FinalAnswerTool()
 image_generation_tool = load_tool("agents-course/text-to-image", trust_remote_code=True)
@@ -165,7 +167,7 @@ def create_model_with_fallback():
                 max_tokens=2096,
                 temperature=0.5,
                 custom_role_conversions=None,
-                # token=os.getenv("HF_API_TOKEN")
+                token=os.getenv("HF_API_TOKEN")
             )
             # Teste opcional: fazer uma chamada pequena pra garantir
             model(

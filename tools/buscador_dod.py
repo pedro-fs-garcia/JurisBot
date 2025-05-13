@@ -102,7 +102,7 @@ class BuscadorDOD(Tool):
             print(f'Total de itens encontrados: {len(items)}')
             # print(json.dumps(items, indent=2, ensure_ascii=False))
             
-            return items
+            return items[:min(len(items), 1)]
         
         except Exception as e:
             print(f'Erro ao fazer scraping: {e}')
