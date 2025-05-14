@@ -1,4 +1,4 @@
-from smolagents import CodeAgent,DuckDuckGoSearchTool, HfApiModel,load_tool,tool
+from smolagents import CodeAgent, DuckDuckGoSearchTool, load_tool, tool
 import datetime
 import requests
 import pytz
@@ -6,11 +6,10 @@ import yaml
 from tools.buscador_dod import BuscadorDOD
 from tools.buscador_tjdft import BuscadorTJDFT
 from tools.final_answer import FinalAnswerTool
-from huggingface_hub.utils import HfHubHTTPError
 import dotenv
 import os
 import json
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 import markdown
 
 from Gradio_UI import GradioUI
@@ -145,54 +144,100 @@ def formatar_resposta_juridica(
 final_answer = FinalAnswerTool()
 image_generation_tool = load_tool("agents-course/text-to-image", trust_remote_code=True)
 
-# Lista de modelos para fallback
-MODELS_TO_TRY = [
-    "mistralai/Mistral-7B-Instruct-v0.2",
-    "Qwen/Qwen2.5-Coder-3B-Instruct",
-    "Qwen/Qwen2.5-Coder-32B-Instruct",
-    "HuggingFaceH4/zephyr-7b-beta",
-    "mistralai/Mistral-7B-Instruct-v0.2",
-    "https://pflgm2locj2t89co.us-east-1.aws.endpoints.huggingface.cloud",
-    "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "microsoft/phi-2",
-    "google/gemma-2b-it",
-    "google/flan-t5-small",
-    "facebook/opt-350m",
-    "EleutherAI/pythia-410m-deduped",
-    "bigscience/bloom-560m",
-]
+# Classe para formatar a resposta no formato esperado pelo smolagents
+class ChatMessage:
+    """Classe que simula o formato de resposta esperado pelo smolagents."""
+    def __init__(self, content):
+        self.content = content
+        self.finish_reason = "stop"
 
-# Função para criar modelo com fallback
-def create_model_with_fallback():
-    last_exception = None
-    for model_name in MODELS_TO_TRY:
+# Implementação do modelo Groq compatível com smolagents
+class GroqModel:
+    """Wrapper para Groq API compatível com smolagents."""
+    
+    def __init__(self, api_key=None, model="llama3-8b-8192", max_tokens=2000, temperature=0.7):
+        self.api_key = api_key or os.getenv("GROQ_API_KEY")
+        self.model = model
+        self.max_tokens = max_tokens
+        self.temperature = temperature
+        
+        if not self.api_key:
+            raise ValueError("⚠️ API key do Groq não encontrada. Defina a variável de ambiente GROQ_API_KEY.")
+        
+        # Importar a biblioteca groq
         try:
-            print(f"Tentando carregar modelo: {model_name}...")
-            model = HfApiModel(
-                model_id=model_name,
-                max_tokens=2096,
-                temperature=0.5,
-                custom_role_conversions=None,
-                # token=os.getenv("HF_API_TOKEN")
-                token=os.environ.get("HF_TOKEN_API")
+            import groq
+            self.client = groq.Client(api_key=self.api_key)
+            print(f"✅ Cliente Groq inicializado com sucesso. Modelo: {model}")
+        except ImportError:
+            raise ImportError("⚠️ Biblioteca groq não encontrada. Instale com: pip install groq")
+    
+    def __call__(self, messages, **kwargs):
+        """Interface compatível com smolagents."""
+        try:
+            # Extrair parâmetros relevantes
+            max_tokens = kwargs.get("max_tokens", self.max_tokens)
+            temperature = kwargs.get("temperature", self.temperature)
+            stop_sequences = kwargs.get("stop_sequences", None)
+            
+            # Converter mensagens para o formato esperado pelo Groq
+            formatted_messages = []
+            for msg in messages:
+                if not isinstance(msg["content"], str):
+                    msg["content"] = str(msg["content"])
+                formatted_messages.append({
+                    "role": msg["role"] if msg['role'] in ['system', 'user', 'assistant'] else 'user',
+                    "content": msg["content"]
+                })
+            
+            # Chamar a API do Groq
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=formatted_messages,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                stop=stop_sequences
             )
-            # Teste opcional: fazer uma chamada pequena pra garantir
-            model(
-                messages=[{"role": "user", "content": "Olá"}],
-                max_tokens=5
-            )
-            print(f"✅ Modelo {model_name} carregado com sucesso!")
-            return model
-        except HfHubHTTPError as e:
-            print(f"⚠️ Falha no modelo {model_name}: {e}")
-            last_exception = e
+            
+            # Retornar no formato esperado pelo smolagents
+            return ChatMessage(response.choices[0].message.content)
         except Exception as e:
-            print(f"⚠️ Erro inesperado com {model_name}: {e}")
-            last_exception = e
-    raise RuntimeError("Nenhum modelo disponível!") from last_exception
+            print(f"Erro ao chamar Groq API: {e}")
+            raise RuntimeError(f"Erro ao chamar Groq API: {str(e)}")
 
-# Carrega modelo usando fallback
-model = create_model_with_fallback()
+# Função para criar o modelo Groq
+def create_groq_model():
+    """Cria e retorna uma instância do modelo Groq."""
+    try:
+        # Verificar se a API key está definida
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            raise ValueError("API key do Groq não encontrada. Defina a variável de ambiente GROQ_API_KEY.")
+        
+        # Criar o modelo
+        print("Inicializando modelo Groq...")
+        model = GroqModel(
+            api_key=api_key,
+            model="llama3-8b-8192",  # Modelo rápido e eficiente
+            max_tokens=2000,
+            temperature=0.5
+        )
+        
+        # Teste rápido para verificar se o modelo está funcionando
+        print("Testando modelo Groq...")
+        result = model(
+            messages=[{"role": "user", "content": "Olá, você pode me ajudar com uma questão jurídica?"}],
+            max_tokens=10
+        )
+        
+        print("✅ Modelo Groq inicializado e testado com sucesso!")
+        return model
+    except Exception as e:
+        print(f"❌ Erro ao inicializar modelo Groq: {e}")
+        raise RuntimeError(f"Falha ao inicializar modelo Groq: {str(e)}")
+
+# Carrega o modelo Groq
+model = create_groq_model()
 
 # Carrega prompts
 with open("prompts.yaml", 'r', encoding='utf-8') as stream:
@@ -200,7 +245,7 @@ with open("prompts.yaml", 'r', encoding='utf-8') as stream:
 
 agent = CodeAgent(
     model=model,
-    tools=[final_answer, DuckDuckGoSearchTool(), VisitWebpageTool(), buscar_jurisprudencia, formatar_resposta_juridica], ## add your tools here (don't remove final answer)
+    tools=[final_answer, DuckDuckGoSearchTool(), VisitWebpageTool(), buscar_jurisprudencia, formatar_resposta_juridica],
     max_steps=6,
     verbosity_level=1,
     grammar=None,
@@ -210,5 +255,5 @@ agent = CodeAgent(
     prompt_templates=prompt_templates
 )
 
-
+# Inicia a interface Gradio
 GradioUI(agent).launch()
